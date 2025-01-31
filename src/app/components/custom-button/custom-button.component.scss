@@ -1,0 +1,69 @@
+/* Définir les styles de base */
+button {
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    display: flex;
+  }
+  
+  button.primary {
+    background-color: #007bff;
+    border-radius: 100%;
+    color: white;
+  }
+  
+  button.secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  button.small {
+    font-size: 12px;
+    padding: 5px 10px;
+    
+  }
+  
+  button.medium {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+  
+  button.large {
+    font-size: 16px;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .icon {
+    margin: 0 8px;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  
+  .rightPadding {
+    display: flex;
+    flex-direction: row;
+    & #content {
+      margin-right: 10px;
+    }
+  }
+  .leftPadding {
+    display: flex;
+    flex-direction: row-reverse;
+    & #content {
+      margin-left: 10px;
+    }
+  }
+  

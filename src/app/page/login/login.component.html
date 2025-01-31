@@ -1,0 +1,13 @@
+
+    <div class="w-2/4 ml-auto mr-auto">
+        <div class="flex bg-slate-300 rounded-full mb-2 w-full">
+            @if(isSignIn) {
+            <div  class="cursor-pointer w-2/4 text-center bg-blue-500 rounded-l-full pt-4 pb-4"><p class=" text-white font-bold">Se Connecter</p></div>
+            <div (click)="changeSign()" class="cursor-pointer  w-2/4 text-center bg-blue-200 rounded-r-full pt-4 pb-4 hover:bg-blue-100"><p class="text-black font-bold">S'inscrire</p></div>
+            } @else {
+            <div (click)="changeSign()" class="cursor-pointer  w-2/4 text-center bg-blue-200 rounded-l-full pt-4 pb-4 hover:bg-blue-100"><p class="text-black font-bold">Se Connecter</p></div>
+            <div class="w-2/4 text-center bg-blue-500 rounded-r-full pt-4 pb-4"><p class="text-white font-bold">S'inscrire</p></div>
+            }
+        </div>
+        <app-form-sign [isSignIn]="isSignIn"/>
+    </div>

@@ -1,0 +1,24 @@
+<button 
+[ngClass]="{
+  'leftPadding': iconPosition === 'left',
+  'rightPadding': iconPosition === 'right',
+  'primary': color === 'primary',
+  'secondary': color === 'secondary',
+  'small': size === 'small',
+  'medium': size === 'medium',
+  'large': size === 'large',
+  'disabled': disabled === 'true',
+  
+}"
+  [disabled]="disabled"
+  (click)="handleClick()">
+  
+  <!-- Affichage conditionnel de l'icône à gauche -->
+
+    <span id="content">
+      <ng-content></ng-content>
+    </span>
+     <span>{{ label }}</span> 
+
+
+</button>

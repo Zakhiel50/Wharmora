@@ -1,0 +1,148 @@
+
+<div class="flex-col p-10 bg-white border border-gray-200 rounded-lg shadow msl-full">
+    <div class="relative pb-6 w-full">
+        <label class="label bg-white absolute top-[-12px] px-1 left-3 text-gray-500">Email</label>
+        <input class="h-12 border-2   rounded input w-full pl-3 focus bg-white" placeholder="email" type="email" name="email" [(ngModel)]="email">
+    </div>
+    
+    <div class="relative w-full">
+        <input class="h-12 border-2 rounded input w-full pl-3" placeholder="mot de passe" type="{{isShow ? 'text' : 'password'}}" name="password" [(ngModel)]="userPassword">
+        <label class="label bg-white absolute top-[-12px] px-1 left-3 text-gray-500">Mot de passe</label>
+        @if(isShow){
+            <lucide-icon class="absolute top-1/4  right-2" (click)="showPassword()" [img]="eyeOff"></lucide-icon>
+        } @else {
+            <lucide-icon class="absolute top-1/4 right-2"  (click)="showPassword()" [img]="eye"></lucide-icon>
+        }
+    </div>
+
+    @if (!isSignIn()) {
+        <div class="relative w-full mt-6 pb-2">
+            <div>
+                <input class="h-12 border-2 rounded input w-full pl-3 relative" placeholder="Confirmer votre mot de passe" type="{{isShow ? 'text' : 'password'}}" name="confirmPassword" [(ngModel)]="passwordConfirmation">
+                <label class="label bg-white absolute top-[-12px] px-1 left-3 text-gray-500 z-1">Confirmer le mot de passe</label>
+                @if(isShow){
+                    <lucide-icon class="absolute top-1/4  right-2" (click)="showPassword()" [img]="eyeOff"></lucide-icon>
+                } @else {
+                    <lucide-icon class="absolute top-1/4 right-2"  (click)="showPassword()" [img]="eye"></lucide-icon>
+                }
+            </div>
+        </div>
+    }  
+    @if (isSignIn()){
+        <p class="text-red-500 text-xs">{{alertMessage}}</p>
+    <p class="pb-6 pt-2 right-0 text-right text-xs">j'ai oublié mon mot de passe</p>
+    <div class="flex justify-end text-blue-500">
+        @if (regexEmail.test(email) && userPassword.length > 2) {
+            <app-custom-button
+            label="SE CONNECTER"
+            iconPosition="left"
+            color="primary"
+            size="large"
+            (onClick)="CheckPasswordConfirmation()">
+                <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
+            </app-custom-button>
+        } @else {
+            <app-custom-button
+            label="SE CONNECTER"
+            iconPosition="left"
+            color="primary"
+            size="large"
+            disabled="true"
+            (onClick)="CheckPasswordConfirmation()">
+                <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
+            </app-custom-button>
+        }
+    </div>
+    } @else {
+        <div class="border border-gray-200 my-6">
+            <ul>
+                <li
+                class="flex-row flex gap-1 mx-2 my-2">
+                    <lucide-icon 
+                    class="{{hasLowerCase(userPassword) ? 'text-green-400' : 'text-red-400'}}"
+                    [img]="hasLowerCase(userPassword) ? check : x">        
+                    </lucide-icon>
+                    <label for="minuscule">1 Minuscule minimum</label>
+                </li>
+                
+                <li
+                class="flex-row flex gap-1 mx-2 my-2">
+                    <lucide-icon 
+                    class="{{hasUpperCase(userPassword) ? 'text-green-400' : 'text-red-400'}}"
+                    [img]="hasUpperCase(userPassword) ? check : x">        
+                    </lucide-icon>
+                    <label for="majuscule">1 Majuscule minimum</label>
+                </li>
+                
+                <li
+                class="flex-row flex gap-1 mx-2 my-2">
+                    <lucide-icon 
+                    class="{{hasSpecialCharacter(userPassword) ? 'text-green-400' : 'text-red-400'}}"
+                    [img]="hasSpecialCharacter(userPassword) ? check : x">        
+                    </lucide-icon>            
+                    <label for="special">1 Caractère spécial</label>
+                </li>
+        
+                <li
+                class="flex-row flex gap-1 mx-2 my-2">
+                    <lucide-icon 
+                    class="{{hasNumberCharacter(userPassword) ? 'text-green-400' : 'text-red-400'}}"
+                    [img]="hasNumberCharacter(userPassword) ? check : x">        
+                    </lucide-icon>            
+                    <label for="special">1 chiffre minimum</label>
+                </li>
+        
+                <li
+                class="flex-row flex gap-1 mx-2 my-2">
+                    <lucide-icon 
+                    class="{{userPassword.length >= 8 ? 'text-green-400' : 'text-red-400'}}"
+                    [img]="userPassword.length >= 8 ? check : x">        
+                    </lucide-icon>            
+                    <label for="heightCharacters">8 caractères minimum</label>
+                </li>
+                
+                <li
+                class="flex-row flex gap-1 mx-2 my-2">
+                    <lucide-icon 
+                    class="{{userPassword === passwordConfirmation && regexPassword.test(userPassword) ? 'text-green-400' : 'text-red-400'}}"
+                    [img]="userPassword === passwordConfirmation && regexPassword.test(userPassword) ? check : x">        
+                    </lucide-icon>            
+                    <label for="special">Les mots de passe doivent correspondre</label>
+                </li>
+
+                <li
+                class="flex-row flex gap-1 mx-2 my-2">
+                    <lucide-icon 
+                    class="{{ regexEmail.test(email) ? 'text-green-400' : 'text-red-400'}}"
+                    [img]=" regexEmail.test(email) ? check : x">        
+                    </lucide-icon>            
+                    <label for="special">L'email doit être valide</label>
+                </li>
+                
+            </ul>
+        </div>
+        @if (regexEmail.test(email) && regexPassword.test(userPassword) && regexPassword.test(passwordConfirmation)){
+            <div class="flex justify-end text-blue-500">
+                <app-custom-button
+                label="S'INSCRIRE"
+                iconPosition="left"
+                color="primary"
+                size="large"
+                (onClick)="isPasswordValid()">
+                    <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
+                </app-custom-button>
+            </div>
+        } @else {
+            <div class="flex justify-end text-blue-500">
+                <app-custom-button
+                label="S'INSCRIRE"
+                iconPosition="left"
+                color="primary"
+                size="large"
+                disabled="true">
+                    <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
+                </app-custom-button>
+            </div>
+        }
+    }
+</div>
