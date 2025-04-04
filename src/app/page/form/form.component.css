@@ -12,15 +12,12 @@
     color: black;
     font-weight: bold;
   }
-  
-  .buttons {
-    margin-top: 20px;
-  }
-  
+
   button {
     margin: 5px;
     padding: 8px 16px;
     cursor: pointer;
+    border-radius: 8px;
   }
   .card {
     display: flex;
@@ -55,4 +52,24 @@
   .checkbox {
     margin-top: 30px;
     margin-right: 10px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;    
+    margin-top: 20px;
+  }
+
+  .previous {
+    background-color: #ffb4b4;
+  }
+  
+  .next {
+    background-color: #d1ffbf;
+  }
+
+  .next:disabled {
+    background-color: #f8f8f8;
   }

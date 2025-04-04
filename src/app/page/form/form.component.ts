@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControlName, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilderService } from '../../services/form-builder.service';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, TitleCasePipe } from '@angular/common';
 import { ManageDataService } from '../../services/manage-data.service';
 import { Router } from '@angular/router';
 import { Data } from '../../../utils/models/data.type';
@@ -9,7 +9,7 @@ import { Data } from '../../../utils/models/data.type';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [JsonPipe, ReactiveFormsModule],
+  imports: [JsonPipe, ReactiveFormsModule, TitleCasePipe],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
@@ -33,11 +33,11 @@ export class FormComponent {
   ];
 
   animalOptions = [
-    { label: 'Chat', value: 'cat' },
-    { label: 'Chien', value: 'dog' },
-    { label: 'Oiseau', value: 'bird' },
-    { label: 'Lapin', value: 'rabbit' },
-    { label: 'Poisson', value: 'fish' },
+    { label: 'Chat', value: 'chat' },
+    { label: 'Chien', value: 'chien' },
+    { label: 'Oiseau', value: 'oiseau' },
+    { label: 'Lapin', value: 'lapin' },
+    { label: 'Poisson', value: 'poisson' },
   ];
 
   ReligionOptions = [

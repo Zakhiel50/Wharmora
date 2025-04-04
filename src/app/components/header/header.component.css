@@ -1,0 +1,9 @@
+nav p {
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+
+nav p.active {
+    border-bottom: 3px solid #ff6347; /* La couleur de la barre */
+    font-weight: bold;  /* Facultatif pour mettre en avant l'élément actif */
+}

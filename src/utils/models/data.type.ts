@@ -1,5 +1,8 @@
 export type Data = {
-    child?: Child,
+    child: {
+        children_name: String,
+        children_age: Number
+      },
   deceased?: Deceased,
   animal?: Animal,
   notion?: Notion

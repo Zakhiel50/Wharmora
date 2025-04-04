@@ -156,20 +156,43 @@
       <!-- Étape 5 : Résumé -->
       <div class="card">
         <h3>Résumé des informations</h3>
-        <pre>{{ formChild.value | json }}</pre>
-        <pre>{{ formDeceased.value | json }}</pre>
-        <pre>{{ formAnimal.value | json }}</pre>
-        <pre>{{ formNotion.value | json }}</pre>
+        <ul>
+          <li>Nom de l'enfant: <strong>{{formChild.get('children_name')?.value | titlecase}}</strong></li>
+          <li>Age de l'enfant: <strong>{{formChild.get('children_age')?.value}} ans</strong></li>
+          <li>Nom du défunt: <strong>{{formDeceased.get('deceased_name')?.value | titlecase}}</strong></li>
+          <li>Age du défunt: <strong>{{formDeceased.get('deceased_age')?.value}}</strong> ans</li>
+          <li>Défuns sous forme animal: <strong>{{formDeceased.get('deceased_is_animal')?.value == true ? 'Oui' : 'Non'}}</strong></li>
+          @if (formDeceased.get('deceased_is_animal')?.value) {
+            <li>Animal représentant le défunt: <strong>{{formDeceased.get('deceased_animal_type')?.value | titlecase}}</strong></li>
+          }
+          <li>Animal favoris de l'enfant: <strong>{{formAnimal.get('favorite_animal')?.value | titlecase}}</strong></li>
+          <li>A t'il un aniomal de compagnie: <strong>{{formAnimal.get('is_pet')?.value == true ? 'Oui' : 'Non'}}</strong></li>
+          @if (formAnimal.get('is_pet')?.value) {
+            <li>Type d'animal de compagnie: <strong>{{formAnimal.get('pet_type')?.value | titlecase}}</strong></li>
+            <li>Nom de l'animal de copagnie: <strong>{{formAnimal.get('pet_name')?.value | titlecase}}</strong></li>
+          }
+          <li>Croyance au paradis: <strong>{{formNotion.get('is_paradise')?.value === true ? 'Oui' : 'Non'}}</strong></li>
+          <li>Ajouter des pages blanches <strong>{{formNotion.get('is_added_white_paper')?.value == true ? 'Oui' : 'Non'}}</strong></li>
+          <li>Ajouter une phrase personnalisée <strong>{{formNotion.get('is_custom_para')?.value == true ? 'Oui' : 'Non'}}</strong></li>
+          @if (formNotion.get('is_custom_para')?.value) {
+            <li>Phrase personnalisée: <strong>{{formNotion.get('custom_para')?.value}}</strong></li>
+          }
+          <li>Vous avez une religion: <strong>{{formNotion.get('is_paradise')?.value == true ? 'Oui' : 'Non'}}</strong></li>
+          @if (formNotion.get('is_religion')?.value) {
+            <li>Votre religion est: <strong>{{formNotion.get('religion_type')?.value | titlecase}}</strong></li>
+          }
+        </ul>
       </div>
     }
     <!-- Boutons -->
     <div class="buttons">
       @if (step > 0) {
-        <button type="button" (click)="prevStep()">Précédent</button>
+        <button class="previous" type="button" (click)="prevStep()">Précédent</button>
       }
       @if (step < steps.length - 1) {
         <button
           type="button"
+          class="next"
           (click)="nextStep(getCurrentForm())"
           [disabled]="!getCurrentForm().valid">
           Suivant
@@ -177,7 +200,7 @@
       }
       
       @if(step === 4) {
-        <button type="submit" [disabled]="formNotion.invalid" (click)="submit()">Envoyer</button>
+        <button class="submit" type="submit" [disabled]="formNotion.invalid" (click)="submit()">Envoyer</button>
       }
     </div>
   

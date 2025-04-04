@@ -1,12 +1,13 @@
 <header class="w-full h-20 bg-slate-400">
     <nav class="w-full flex flex-row justify-around items-center">
         <img class="w-32" src="assets/img/logo.webp" alt="">
-        <p>Accueil</p>
-        <p>Creer mon livre</p>
-        <p>Blog</p>
-        <p>A propos</p>
+        
+        <p [ngClass]="{'active': currentSection === 'form'}" (click)="setSection('form')">Créer mon livre</p>
+        <p [ngClass]="{'active': currentSection === 'blog'}" (click)="setSection('blog')">Blog</p>
+        <p [ngClass]="{'active': currentSection === 'about'}" (click)="setSection('about')">À propos</p>
+
         <div class="w-12 h-12 ml-20 bg-white rounded-full">
-            <img class="w-full h-full rounded-full" src="assets/img/imgMock.jpg">
+            <img class="w-full h-full rounded-full" src="assets/img/imgMock.jpg" (click)="setSection('login')">
         </div>
     </nav>
 </header>
