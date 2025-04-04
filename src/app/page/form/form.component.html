@@ -1,0 +1,184 @@
+
+
+<div>
+
+  <div class="breadcrumb">
+    @for (stepLabel of steps; track stepLabel) {
+      <span [class.active]="steps.indexOf(stepLabel) === step">
+        {{ stepLabel }} 
+        @if (steps.indexOf(stepLabel) < steps.length - 1) {
+          <span> / </span>
+        }
+      </span>
+    }
+  </div>
+  <!-- Étape 1 : Enfant -->
+  @if (step === 0) {
+    <form [formGroup]="formChild" >
+      <div class="card">
+        <div class="containerInput">
+          <label for="children_name"><small>*</small> Quel est le nom de l'enfant :</label>
+          <input class="input" id="children_name" formControlName="children_name">
+          @if (formChild.get('children_name')?.invalid && formChild.get('children_name')?.touched) {
+            <small>Ce champ est requis</small>
+          }
+          
+        </div>
+        <div class="containerInput">
+          <label for="children_age"><small>*</small> Quel âge a l'enfant ?</label>
+          <input class="input" id="children_age" type="number" formControlName="children_age">
+        </div>
+      </div>
+      
+    </form>
+    }
+    @if (step === 1) {
+      <form [formGroup]="formDeceased" >
+      <div class="card">
+        <div class="containerInput">
+          <label for="deceased_name"><small>*</small> Quel est le nom du proche concerné ?</label>
+          <input class="checkbox" class="input" id="deceased_name" formControlName="deceased_name">
+        </div>
+        
+        <div class="containerInput">
+          <label for="deceased_age"><small>*</small> Quel âge à votre proche ?</label>
+          <input class="input" id="deceased_age" type="number" formControlName="deceased_age">
+        </div>
+        
+        <label>
+          <input class="checkbox" type="checkbox" formControlName="deceased_is_animal"> Voulez vous représenter votre proche sous une forme d'animal ?
+        </label>
+        @if (isChecked(formDeceased, 'deceased_is_animal')) {
+        <div class="containerInput">
+          <label for="deceased_animal_type">Sous quel type d'animal voulez vous le représenter ?</label>
+          <select class="input" id="favorite_animal" formControlName="deceased_animal_type">
+            <option value="" disabled selected>-- Sélectionnez un animal --</option>
+          
+            @for (animal of animalOptions; track animal.label) {
+              <option [value]="animal.value">
+                {{ animal.label }}
+              </option>
+            }
+          </select>
+        </div>
+      }
+      </div>
+      </form>
+    }
+    @if (step === 2) {
+      <form [formGroup]="formAnimal">
+        <!-- Étape 3 : Animal de compagnie -->
+        <div class="card">
+          <div class="containerInput">
+            <label for="favorite_animal"><small>*</small> Quel est l'animal préféré de l'enfant ?</label>
+            <select class="input" id="favorite_animal" formControlName="favorite_animal">
+              <option value="" disabled selected>-- Sélectionnez un animal --</option>
+            
+              @for (animal of animalOptions; track animal.label) {
+                <option [value]="animal.value">
+                  {{ animal.label }}
+                </option>
+              }
+            </select>
+          </div>
+      
+          <label>
+            <input class="checkbox" type="checkbox" formControlName="is_pet">
+            A-t-il un animal de compagnie ?
+          </label>
+          @if (isChecked(formAnimal, 'is_pet')) {
+          <div class="containerInput">
+            <label for="pet_type"><small>*</small> Quel type d'animal de compagnie est-ce ?</label>
+            <select class="input" id="pet_type" formControlName="pet_type">
+              <option value="" disabled selected>-- Sélectionnez un animal --</option>
+              @for (animal of animalOptions; track animal.label) {
+                <option [value]="animal.value">
+                  {{ animal.label }}
+                </option>
+              }
+            </select>
+          </div>
+      
+          <div class="containerInput">
+            <label for="pet_name"><small>*</small> Quel est le nom de l'animal de compagnie ?</label>
+            <input class="input" id="pet_name" formControlName="pet_name">
+          </div>
+        }
+        </div>
+      </form>
+      
+      
+    }
+    @if (step === 3) {
+      <form [formGroup]="formNotion" >
+
+      <!-- Étape 4 : Croyances -->
+      <div class="card">
+        <label>
+          <input class="checkbox" type="checkbox" formControlName="is_paradise"> Votre famille croit à la notion de paradis ?
+        </label>
+        
+        <label>
+          <input class="checkbox" type="checkbox" formControlName="is_added_white_paper"> Voulez vous ajouté au livre des pages blanches ?
+        </label>
+        
+        <label>
+          <input class="checkbox" type="checkbox" formControlName="is_custom_para"> Voulez vous insérer un texte personnalisé ?
+        </label>
+        @if (isChecked(formNotion, 'is_custom_para')) {
+          <div class="containerInput">
+            <label for="custom_para">Texte personnalisé :</label>
+            <textarea id="custom_para" formControlName="custom_para"></textarea>
+          </div>
+        }
+        
+        <label>
+          <input class="checkbox" type="checkbox" formControlName="is_religion"> Votre famille croit en une religion et voulez vous l'inclure ?
+        </label>
+        @if (isChecked(formNotion, 'is_religion')) {
+        <div class="containerInput">
+          <label for="religion_type">Type de religion :</label>
+          <select class="input" id="religion_type" formControlName="religion_type">
+            <option value="" disabled selected>-- Sélectionnez un animal --</option>
+            @for (religion of ReligionOptions; track religion.label) {
+              <option [value]="religion.value">
+                {{ religion.label }}
+              </option>
+            }
+          </select>
+        </div>
+      }
+     
+      </div>
+      </form>
+    }
+    @if (step === 4) {
+      <!-- Étape 5 : Résumé -->
+      <div class="card">
+        <h3>Résumé des informations</h3>
+        <pre>{{ formChild.value | json }}</pre>
+        <pre>{{ formDeceased.value | json }}</pre>
+        <pre>{{ formAnimal.value | json }}</pre>
+        <pre>{{ formNotion.value | json }}</pre>
+      </div>
+    }
+    <!-- Boutons -->
+    <div class="buttons">
+      @if (step > 0) {
+        <button type="button" (click)="prevStep()">Précédent</button>
+      }
+      @if (step < steps.length - 1) {
+        <button
+          type="button"
+          (click)="nextStep(getCurrentForm())"
+          [disabled]="!getCurrentForm().valid">
+          Suivant
+        </button>
+      }
+      
+      @if(step === 4) {
+        <button type="submit" [disabled]="formNotion.invalid" (click)="submit()">Envoyer</button>
+      }
+    </div>
+  
+</div>

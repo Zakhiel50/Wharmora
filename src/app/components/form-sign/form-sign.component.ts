@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, NgModule} from '@angular/core';
 import { LucideAngularModule, MoveRight, Eye, EyeOff, Check, X } from 'lucide-angular';
-import { FormsModule } from '@angular/forms';  // Assurez-vous d'importer FormsModule
+import { FormsModule } from '@angular/forms'; 
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-form-sign',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrl: './form-sign.component.css'
 })
 export class FormSignComponent{
-  constructor(private router: Router) {}
+  constructor(private router: Router, private readonly authService: AuthService) {}
 
 readonly moveRight = MoveRight
 readonly eye = Eye
@@ -42,7 +43,6 @@ userMocked = {
  * @returns boolean
  */
 isPasswordValid(): any {
-  // a continuer ici pour la redirection pour l'inscription
   if ((this.regexPassword.test(this.passwordConfirmation) && this.userPassword === this.passwordConfirmation)) {
     console.log("good");
   }
@@ -96,5 +96,12 @@ hasNumberCharacter(password: string): boolean {
   return /[0-9]/.test(password);
 }
 
+signUp () {
+  this.authService.signUp(this.email, this.userPassword)
+}
+
+signIn () {
+  this.authService.signIn(this.email, this.userPassword)
+}
 }
 

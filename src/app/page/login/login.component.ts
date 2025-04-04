@@ -1,4 +1,3 @@
-import { environment } from './../../../environments/environment';
 import { Component, input } from '@angular/core';
 import { FormSignComponent } from '../../components/form-sign/form-sign.component';
 @Component({
@@ -14,11 +13,4 @@ changeSign() {
    return this.isSignIn = !this.isSignIn
 }
 
-// signIn(): void {
-//   this.authService.login('john@doe.fr', 'azerty').subscribe({
-//     next: (res) => console.log('res : ', res),
-//     error: (err) => console.error('error: Impossible de récupérer les informations de connections : ', err)
-    
-//   })
-// }
 }

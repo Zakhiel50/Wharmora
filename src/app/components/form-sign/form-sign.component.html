@@ -38,7 +38,7 @@
             iconPosition="left"
             color="primary"
             size="large"
-            (onClick)="CheckPasswordConfirmation()">
+            (onClick)="signIn()">
                 <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
             </app-custom-button>
         } @else {
@@ -48,7 +48,7 @@
             color="primary"
             size="large"
             disabled="true"
-            (onClick)="CheckPasswordConfirmation()">
+            (onClick)="signIn()">
                 <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
             </app-custom-button>
         }
@@ -128,7 +128,7 @@
                 iconPosition="left"
                 color="primary"
                 size="large"
-                (onClick)="isPasswordValid()">
+                (onClick)="signUp()">
                     <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
                 </app-custom-button>
             </div>

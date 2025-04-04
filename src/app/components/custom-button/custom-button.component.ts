@@ -12,14 +12,14 @@ import { LucideAngularModule } from 'lucide-angular';
 })
 export class CustomButtonComponent {
 
-  @Input() label: string = 'Button'; // Texte par défaut
-  @Input() size: 'small' | 'medium' | 'large' = 'medium'; // Taille du bouton
-  @Input() color?: 'primary' | 'secondary'; // Couleur (style custom)
-  @Input() disabled?: "false" | 'true' | 'string' | undefined; // Désactiver le bouton
-  @Input() iconPosition?: 'left' | 'right'; // Position de l'icône
+  @Input() label: string = 'Button';
+  @Input() size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() color?: 'primary' | 'secondary';
+  @Input() disabled?: "false" | 'true' | 'string' | undefined; 
+  @Input() iconPosition?: 'left' | 'right'; 
 
 
-  @Output() onClick = new EventEmitter<void>(); // Événement pour cliquer sur le bouton
+  @Output() onClick = new EventEmitter<void>(); 
 
 
   handleClick() {

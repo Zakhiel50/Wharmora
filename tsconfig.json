@@ -26,6 +26,7 @@
     ]
   },
   "angularCompilerOptions": {
+    "enableExperimentalFeatures": ["declarativeTemplates"],
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
