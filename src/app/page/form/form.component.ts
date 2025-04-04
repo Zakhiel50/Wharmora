@@ -9,7 +9,7 @@ import { Data } from '../../../utils/models/data.type';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [JsonPipe, ReactiveFormsModule, TitleCasePipe],
+  imports: [ReactiveFormsModule, TitleCasePipe],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
