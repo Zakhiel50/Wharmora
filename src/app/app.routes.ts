@@ -6,8 +6,8 @@ export const routes: Routes = [
   {
     path: '',
       loadComponent: () =>
-        import('./page/form/form.component').then(
-          (m) => m.FormComponent
+        import('./page/login/login.component').then(
+          (m) => m.LoginComponent
         ),
     pathMatch: 'full'
   },

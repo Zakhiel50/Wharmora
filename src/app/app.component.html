@@ -1,4 +1,6 @@
-<app-header/>
+@if (showHeader) {
+    <app-header></app-header>
+}  
 <div class="h-full w-full pt-20">
     <router-outlet></router-outlet>
 </div>
