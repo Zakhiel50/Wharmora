@@ -57,7 +57,7 @@ npm install html2canvas jspdf
 
 ---
 
-## Development server
+## Serveur de développement
 
 Lancez ng serve pour démarrer un serveur de développement.
 Accédez à l'application via `http://localhost:4200/`.
@@ -65,7 +65,7 @@ L'application se rechargera automatiquement dès que vous modifiez un fichier so
 
 ---
 
-## Code scaffolding
+## Génération de comosant
 
 Utilisez `ng generate component nom-du-composant` pour générer un nouveau composant.
 Vous pouvez aussi utiliser `ng generate directive|pipe|service|class|guard|interface|enum|module`.
@@ -149,19 +149,19 @@ Les fichiers générés seront dans le dossier `dist/`.
 
 ---
 
-## Running unit tests
+## Lancement des test unitaires
 
 Lancez ng test pour exécuter les tests unitaires via [Karma](https://karma-runner.github.io).
 
 ---
 
-## Running end-to-end tests
+## Lancement des tests End to End
 
 Lancez `ng e2e` pour exécuter les tests end-to-end avec la plateforme de votre choix.
 Pour utiliser cette commande, vous devez d’abord ajouter un package qui implémente ces tests.
 
 ---
 
-## Further help
+## Aide supplémentaire
 
 Pour plus d’aide sur Angular CLI, utilisez `ng help` ou consultez la page [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
