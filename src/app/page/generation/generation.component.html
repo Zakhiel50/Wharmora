@@ -1,1 +1,30 @@
-<p>{{childData}}</p>
+
+<section (click)="generatePDF()"  #pdfContent id="pdfContent">
+    <div  crossorigin="anonymous" class="  relative imgCover">
+        <p class="absolute top-20 left-20 text-xl">C'est l'histoire d'un {{userData.deceased_animal_type}} nommé <strong>{{userData.deceased_name}}</strong> et d'un {{userData.favorite_animal}} qui s'appelle <strong>{{userData.children_name}}</strong> qui jouaient dans la prairie.</p>
+
+        @if(userData.favorite_animal  !== 'tortue') {
+            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="https://zrjbnrzqtfidfinwgqvy.supabase.co/storage/v1/object/sign/warmhora/Totue.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzJmNGYzMjAzLTI1MGUtNGVjYi1hNjE4LWMyNjhmNzAwZGY5MCJ9.eyJ1cmwiOiJ3YXJtaG9yYS9Ub3R1ZS5wbmciLCJpYXQiOjE3NDczOTgzOTQsImV4cCI6MTc3ODkzNDM5NH0.PfNx408M5ijicj3HnQ5hvS9BkisR2QYqpwkU-tuYgKg" alt="Tortue">
+        }
+
+        @if(userData.favorite_animal  !== 'chien') {
+            <img  crossorigin="anonymous"   class="top-0 left-0 absolute" src="https://zrjbnrzqtfidfinwgqvy.supabase.co/storage/v1/object/sign/warmhora/Chien.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzJmNGYzMjAzLTI1MGUtNGVjYi1hNjE4LWMyNjhmNzAwZGY5MCJ9.eyJ1cmwiOiJ3YXJtaG9yYS9DaGllbi5wbmciLCJpYXQiOjE3NDczODc4NDksImV4cCI6MTc3ODkyMzg0OX0.KCFuW01WkMFc1inmacbJ-0_4W5P67JJ6zN2E8UcoZnQ" alt="Chien">
+        }
+
+
+        @if(userData.favorite_animal  !== 'chat') {
+            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="https://zrjbnrzqtfidfinwgqvy.supabase.co/storage/v1/object/sign/warmhora/chat.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzJmNGYzMjAzLTI1MGUtNGVjYi1hNjE4LWMyNjhmNzAwZGY5MCJ9.eyJ1cmwiOiJ3YXJtaG9yYS9jaGF0LnBuZyIsImlhdCI6MTc0NzM5MjAwOSwiZXhwIjoxNzc4OTI4MDA5fQ.75E9ttSO2a32pPIoTzqZyKFgYUdybOinNPyNKW_2Mz0" alt="Chat">
+        }
+
+        @if(userData.favorite_animal  !== 'cheval') {
+            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="https://zrjbnrzqtfidfinwgqvy.supabase.co/storage/v1/object/sign/warmhora/cheval.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzJmNGYzMjAzLTI1MGUtNGVjYi1hNjE4LWMyNjhmNzAwZGY5MCJ9.eyJ1cmwiOiJ3YXJtaG9yYS9jaGV2YWwucG5nIiwiaWF0IjoxNzQ3MzkyMDQ2LCJleHAiOjE3Nzg5MjgwNDZ9._EO-qaMveYOwyhiff7sdn57oam6iBd6JMVcnppgdjc4" alt="Cheval">
+        }
+
+
+        @if(userData.favorite_animal  === 'oiseau') {
+            <img  crossorigin="anonymous" class="w-[5%] absolute top-[28%] left-[58%]" src="https://static.vecteezy.com/system/resources/previews/028/720/659/non_2x/cute-cartoon-robin-bird-generative-ai-free-png.png" alt="Oiseau">
+        }
+        
+        <img  crossorigin="anonymous"class="imgCover" src="https://zrjbnrzqtfidfinwgqvy.supabase.co/storage/v1/object/sign/warmhora/bg_book.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzJmNGYzMjAzLTI1MGUtNGVjYi1hNjE4LWMyNjhmNzAwZGY5MCJ9.eyJ1cmwiOiJ3YXJtaG9yYS9iZ19ib29rLnBuZyIsImlhdCI6MTc0NzM4NzI4NiwiZXhwIjoxNzc4OTIzMjg2fQ.tenWMutSWbNWxRCYDTRpSRGzsLQCUYcJ-_pgChmp_gk" alt="">
+    </div>
+</section>

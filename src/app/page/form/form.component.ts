@@ -5,6 +5,8 @@ import { JsonPipe, TitleCasePipe } from '@angular/common';
 import { ManageDataService } from '../../services/manage-data.service';
 import { Router } from '@angular/router';
 import { Data } from '../../../utils/models/data.type';
+import { single } from 'rxjs';
+import supabase from '../../../utils/supabase.init'
 
 @Component({
   selector: 'app-form',
@@ -37,7 +39,8 @@ export class FormComponent {
     { label: 'Chien', value: 'chien' },
     { label: 'Oiseau', value: 'oiseau' },
     { label: 'Lapin', value: 'lapin' },
-    { label: 'Poisson', value: 'poisson' },
+    { label: 'Tortue', value: 'tortue' },
+    { label: 'Cheval', value: 'cheval' },
   ];
 
   ReligionOptions = [
@@ -86,15 +89,52 @@ export class FormComponent {
     }
   }
 
-  submit() {
-    this.router.navigate(['generation']);
-    this.dataService.saveData({
-      child: this.formChild,
-      deceased: this.formDeceased,
-      animal: this.formAnimal,
-      notion: this.formNotion
-    });
-  }
+ async submit() {
+  this.dataService.saveData({
+    child: this.formChild,
+    deceased: this.formDeceased,
+    animal: this.formAnimal,
+    notion: this.formNotion
+  });
+
+const { data: user, error: userError } = await supabase.auth.getUser();
+
+if (userError || !user.user) {
+  throw new Error('Utilisateur non authentifié');
+}
+
+const userId = user.user.id;
+
+  const formData = {
+    user_id: userId,
+    children_name: this.formChild.get('children_name')!.value,
+    children_age: this.formChild.get('children_age')!.value,
+    deceased_name: this.formDeceased.get('deceased_name')!.value,
+    deceased_age: this.formDeceased.get('deceased_age')!.value,
+    deceased_is_animal: this.formDeceased.get('deceased_is_animal')!.value,
+    deceased_animal_type: this.formDeceased.get('deceased_animal_type')!.value,
+    favorite_animal: this.formAnimal.get('favorite_animal')!.value,
+    is_pet: this.formAnimal.get('is_pet')!.value,
+    pet_type: this.formAnimal.get('pet_type')!.value,
+    pet_name: this.formAnimal.get('pet_name')!.value,
+    is_paradise: this.formNotion.get('is_paradise')!.value,
+    is_added_white_paper: this.formNotion.get('is_added_white_paper')!.value,
+    is_custom_para: this.formNotion.get('is_custom_para')!.value,
+    is_religion: this.formNotion.get('is_religion')!.value,
+    religion_type: this.formNotion.get('religion_type')!.value,
+    custom_para: this.formNotion.get('custom_para')!.value,
+  };
+
+  const { data, error } = await supabase
+    .from('form')
+    .insert([formData])
+    .select();
+
+  if (error) throw error.message;
+
+  this.router.navigate(['generation']);
+}
+
   
   
   
