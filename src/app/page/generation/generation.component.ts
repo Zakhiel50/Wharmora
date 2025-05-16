@@ -4,16 +4,36 @@ import { ManageDataService } from '../../services/manage-data.service';
 import { Data } from '../../../utils/models/data.type';
 import supabase from '../../../utils/supabase.init';
 import jsPDF from 'jspdf';
+import { User } from '@supabase/supabase-js';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
+type UserData = {
+      children_name: string,
+    children_age: number,
+    deceased_name: string,
+    deceased_age: number,
+    deceased_is_animal: boolean,
+    deceased_animal_type: string | null,
+    favorite_animal: string,
+    is_pet: boolean,
+    pet_type: string | null,
+    pet_name: string | null,
+    is_paradise: boolean,
+    is_added_white_paper: boolean,
+    is_custom_para: boolean,
+    is_religion: boolean,
+    religion_type: string | null,
+    custom_para: string | null,
+}
 @Component({
   selector: 'app-generation',
   standalone: true,
-  imports: [],
+  imports: [LoaderComponent],
   templateUrl: './generation.component.html',
   styleUrls: ['./generation.component.css']
 })
 export class GenerationComponent {
-  userData: any
+  userData: UserData | undefined
   constructor(private dataService: ManageDataService) {}
 
   ngOnInit(): void {

@@ -1,14 +1,33 @@
+<div class="w-full sm:w-2/4 mx-auto px-4">
+  <img class="w-full pt-3 pb-10 max-w-xs mx-auto" src="assets/img/logo.png" alt="Logo" />
 
-    <div class="w-2/4 ml-auto mr-auto">
-        <img class="w-100 pt-3 pb-10" src="assets/img/logo.png" alt="">
-        <div class="flex bg-slate-300 rounded-full mb-2 w-full">
-            @if(isSignIn) {
-            <div  class="w-2/4 text-center bg-blue-500 rounded-l-full pt-4 pb-4"><p class="text-white font-bold">Se Connecter</p></div>
-            <div (click)="changeSign()" class="w-2/4 text-center bg-blue-200 rounded-r-full pt-4 pb-4 hover:bg-blue-100"><p class="text-black font-bold">S'inscrire</p></div>
-            } @else {
-            <div (click)="changeSign()" class="w-2/4 text-center bg-blue-200 rounded-l-full pt-4 pb-4 hover:bg-blue-100"><p class="text-black font-bold">Se Connecter</p></div>
-            <div class="w-2/4 text-center bg-blue-500 rounded-r-full pt-4 pb-4"><p class="text-white font-bold">S'inscrire</p></div>
-            }
-        </div>
-        <app-form-sign [isSignIn]="isSignIn"/>
-    </div>
+  <div class="flex flex-col sm:flex-row bg-slate-300 rounded-full mb-2 w-full overflow-hidden">
+    @if (isSignIn) {
+      <div
+        class="w-full sm:w-1/2 text-center bg-blue-500 rounded-t-full sm:rounded-l-full sm:rounded-tr-none pt-4 pb-4"
+      >
+        <p class="text-white font-bold">Se Connecter</p>
+      </div>
+      <div
+        (click)="changeSign()"
+        class="w-full sm:w-1/2 text-center bg-blue-200 rounded-b-full sm:rounded-r-full sm:rounded-bl-none pt-4 pb-4 hover:bg-blue-100 cursor-pointer"
+      >
+        <p class="text-black font-bold">S'inscrire</p>
+      </div>
+    } @else {
+      <div
+        (click)="changeSign()"
+        class="w-full sm:w-1/2 text-center bg-blue-200 rounded-t-full sm:rounded-l-full sm:rounded-tr-none pt-4 pb-4 hover:bg-blue-100 cursor-pointer"
+      >
+        <p class="text-black font-bold">Se Connecter</p>
+      </div>
+      <div
+        class="w-full sm:w-1/2 text-center bg-blue-500 rounded-b-full sm:rounded-r-full sm:rounded-bl-none pt-4 pb-4"
+      >
+        <p class="text-white font-bold">S'inscrire</p>
+      </div>
+    }
+  </div>
+
+  <app-form-sign [isSignIn]="isSignIn"></app-form-sign>
+</div>

@@ -1,40 +1,53 @@
-
-<section (click)="generatePDF()"  #pdfContent id="pdfContent">
-    <div  crossorigin="anonymous" class="  relative imgCover">
-        <p class="absolute top-20 left-20 text-xl">C'est l'histoire d'un {{userData.favorite_animal}} qui s'appelle <strong>{{userData.children_name}}</strong> qui jouait dans la prairie.</p>
-
-        @if(userData.favorite_animal  === 'tortue') {
-            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/tortue.png" alt="Tortue">
-        }
-
-        @if(userData.favorite_animal  === 'chien') {
-            <img  crossorigin="anonymous"   class="top-0 left-0 absolute" src="assets/img/chien.png" alt="Chien">
-        }
-
-        @if(userData.favorite_animal  === 'chat') {
-            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/chat.png" alt="Chat">
-        }
-
-        @if(userData.favorite_animal  === 'cheval') {
-            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/cheval.png" alt="Cheval">
-        }
-
-        @if(userData.favorite_animal  === 'oiseau') {
-            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/oiseau.png" alt="Oiseau">
-        }
-
-        @if(userData.favorite_animal  === 'lapin') {
-            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/lapin.png" alt="Lapin">
-        }
-
-        @if(userData.favorite_animal  === 'mouton') {
-            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/mouton.png" alt="Mouton">
-        }
-
-        @if(userData.favorite_animal  === 'panda roux') {
-            <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/panda-roux.png" alt="Oiseau">
-        }
-        
-        <img  crossorigin="anonymous"class="imgCover" src="https://zrjbnrzqtfidfinwgqvy.supabase.co/storage/v1/object/sign/warmhora/bg_book.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzJmNGYzMjAzLTI1MGUtNGVjYi1hNjE4LWMyNjhmNzAwZGY5MCJ9.eyJ1cmwiOiJ3YXJtaG9yYS9iZ19ib29rLnBuZyIsImlhdCI6MTc0NzM4NzI4NiwiZXhwIjoxNzc4OTIzMjg2fQ.tenWMutSWbNWxRCYDTRpSRGzsLQCUYcJ-_pgChmp_gk" alt="">
+    <div style="height: calc(100vh - 80px);" class="w-full justify-center items-center">
+        <app-loader></app-loader>
     </div>
-</section>
+    <div style="opacity: 1;">
+        <section (click)="generatePDF()"  #pdfContent id="pdfContent">
+        <div  crossorigin="anonymous" class="  relative imgCover">
+            <p class="absolute w-[90%] top-20 left-20 text-xl">
+            C'est l'histoire d'un {{ userData?.favorite_animal }} qui s'appelle <strong>{{ userData?.children_name }}</strong> qui jouait dans la prairie
+            {{ userData?.pet_name ? ' avec son ami ' + userData?.pet_name : '' }}. Le soleil est haut dans le ciel, une légère brise se fait ressentir.
+            <strong>{{userData?.deceased_name }}</strong> regarda gaiement <strong>{{ userData?.children_name }}</strong> jouer.
+            Malheureusement <strong>{{userData?.deceased_name }}</strong> tomba gravement malade! Les médecins ne pouvais le soigner.
+                @if(userData?.is_paradise) {
+                    <p class="pt-4">Les anges sont venus le chercher, <strong>{{userData?.deceased_name }}</strong> est monté au paradis.</p>
+                }
+            </p>
+
+            @if(userData?.favorite_animal  === 'tortue' || userData?.pet_type === "tortue") {
+                <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/tortue.png" alt="Tortue">
+            }
+
+            @if(userData?.favorite_animal  === 'chien'  || userData?.pet_type === "chien") {
+                <img  crossorigin="anonymous"   class="top-0 left-0 absolute" src="assets/img/chien.png" alt="Chien">
+            }
+
+            @if(userData?.favorite_animal  === 'chat'  || userData?.pet_type === "chat") {
+                <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/chat.png" alt="Chat">
+            }
+
+            @if(userData?.favorite_animal  === 'cheval'  || userData?.pet_type === "cheval") {
+                <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/cheval.png" alt="Cheval">
+            }
+
+            @if(userData?.favorite_animal  === 'oiseau'  || userData?.pet_type === "oiseau") {
+                <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/oiseau.png" alt="Oiseau">
+            }
+
+            @if(userData?.favorite_animal  === 'lapin'  || userData?.pet_type === "lapin") {
+                <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/lapin.png" alt="Lapin">
+            }
+
+            @if(userData?.favorite_animal  === 'mouton'  || userData?.pet_type === "mouton") {
+                <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/mouton.png" alt="Mouton">
+            }
+
+            @if(userData?.favorite_animal  === 'panda roux'  || userData?.pet_type === "panda roux") {
+                <img  crossorigin="anonymous" class="top-0 left-0 absolute" src="assets/img/panda-roux.png" alt="panda">
+            }
+            
+            <img  crossorigin="anonymous"class="imgCover" src="https://zrjbnrzqtfidfinwgqvy.supabase.co/storage/v1/object/sign/warmhora/bg_book.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzJmNGYzMjAzLTI1MGUtNGVjYi1hNjE4LWMyNjhmNzAwZGY5MCJ9.eyJ1cmwiOiJ3YXJtaG9yYS9iZ19ib29rLnBuZyIsImlhdCI6MTc0NzM4NzI4NiwiZXhwIjoxNzc4OTIzMjg2fQ.tenWMutSWbNWxRCYDTRpSRGzsLQCUYcJ-_pgChmp_gk" alt="">
+        </div>
+    </section>
+
+    </div>

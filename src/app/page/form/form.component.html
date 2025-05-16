@@ -44,24 +44,6 @@
           <label for="deceased_age"><small>*</small> Quel âge à votre proche ?</label>
           <input class="input" id="deceased_age" type="number" formControlName="deceased_age">
         </div>
-        
-        <label>
-          <input class="checkbox" type="checkbox" formControlName="deceased_is_animal"> Voulez vous représenter votre proche sous une forme d'animal ?
-        </label>
-        @if (isChecked(formDeceased, 'deceased_is_animal')) {
-        <div class="containerInput">
-          <label for="deceased_animal_type">Sous quel type d'animal voulez vous le représenter ?</label>
-          <select class="input" id="favorite_animal" formControlName="deceased_animal_type">
-            <option value="" disabled selected>-- Sélectionnez un animal --</option>
-          
-            @for (animal of animalOptions; track animal.label) {
-              <option [value]="animal.value">
-                {{ animal.label }}
-              </option>
-            }
-          </select>
-        </div>
-      }
       </div>
       </form>
     }
@@ -148,7 +130,6 @@
           </select>
         </div>
       }
-     
       </div>
       </form>
     }

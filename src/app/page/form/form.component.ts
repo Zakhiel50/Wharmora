@@ -41,6 +41,8 @@ export class FormComponent {
     { label: 'Lapin', value: 'lapin' },
     { label: 'Tortue', value: 'tortue' },
     { label: 'Cheval', value: 'cheval' },
+    { label: 'Mouton', value: 'mouton' },
+    { label: 'PandaRoux', value: 'Panda roux' },
   ];
 
   ReligionOptions = [

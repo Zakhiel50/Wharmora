@@ -13,7 +13,7 @@ import { LucideAngularModule } from 'lucide-angular';
 export class CustomButtonComponent {
 
   @Input() label: string = 'Button';
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() size: string | undefined;
   @Input() color?: 'primary' | 'secondary';
   @Input() disabled?: "false" | 'true' | 'string' | undefined; 
   @Input() iconPosition?: 'left' | 'right'; 
