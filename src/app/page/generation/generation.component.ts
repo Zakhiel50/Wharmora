@@ -47,15 +47,11 @@ export class GenerationComponent {
   }
 
   fetchData = async () => {
-
     const { data: userData, error: userError } = await supabase.auth.getUser();
-
     if (userError || !userData.user) {
       throw new Error('Utilisateur non authentifié');
     }
-
     const userId = userData.user.id;
-
     const { data, error } = await supabase
       .from('form')
       .select(`
@@ -77,12 +73,10 @@ export class GenerationComponent {
     custom_para
   `)
       .eq('user_id', userId); // filtre sur l'utilisateur connecté
-
     if (error) {
       console.error('Erreur Supabase:', error.message);
       return;
     }
-
     if (data) {
       this.userData = data[0]
     }

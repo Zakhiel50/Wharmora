@@ -15,25 +15,29 @@ export class AuthService {
   
   async signIn(email: string, password: string) {
     const { data, error } = await this.supabase.auth.signInWithPassword({ email, password });
-    if (data) {
+    console.log(data);
+    
+    if (error) {
+      return error;
+    }
+    else if (data) {
       sessionStorage.setItem('user', JSON.stringify(data.user));
       this.router.navigate(['form'])
     }
-    if (error) throw error;
-    return data;
+    return
   }
 
   async signUp(email: string, password: string) {
     console.log('Tentative d’inscription...', email);
   
     const { data, error } = await this.supabase.auth.signUp({ email, password });
-  
+  console.log(data)
+  console.log(error)
     if (error) {
-      console.error('Erreur Supabase:', error.message);
-      throw error;
+      return console.log('error : ', error.message);
     }
   
-    if (data.user) {
+    if (data && data.user !== null) {
       const { error: insertError } = await this.supabase
         .from('users')
         .insert([{ id: data.user.id, email: data.user.email }],); 

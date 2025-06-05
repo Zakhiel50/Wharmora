@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class PaymentComponent implements OnInit {
   paymentForm!: FormGroup;
-  totalAmount = 19.99;
+  totalAmount = 25.00;
 paymentConfirmed = false;
 
   constructor(private fb: FormBuilder) {}

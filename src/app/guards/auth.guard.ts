@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
       catchError(error => {
         console.error('Erreur lors de la vérification de l’utilisateur:', error);
         this.router.navigate(['login']);
-        return of(false); // Retourne 'false' si l'utilisateur n'est pas authentifié
+        return of(false);
       })
     );
   }

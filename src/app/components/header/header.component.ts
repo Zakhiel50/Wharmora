@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   constructor(private router: Router) {}
-  currentSection: string = 'login';  // Définir la section active par défaut
+  currentSection: string = 'login';
   currentRoute = '';
 
 
@@ -19,7 +19,7 @@ export class HeaderComponent {
   
   setSection(section: string): void {
     this.router.events.subscribe(() => {
-      this.currentRoute = this.router.url.replace('/', ''); // Ex: 'home', 'form', etc.
+      this.currentRoute = this.router.url.replace('/', ''); 
     });
     this.currentSection = section;
     this.router.navigate([section]);

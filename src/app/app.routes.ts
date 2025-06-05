@@ -1,3 +1,4 @@
+import { RgpdComponent } from './pages/rgpd/rgpd.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
@@ -41,5 +42,14 @@ export const routes: Routes = [
       import('./components/payment/payment.component').then(
         (m) => m.PaymentComponent
       ),
+      canActivate: [AuthGuard],
+  },
+      {
+    path: 'rgpd',
+    loadComponent: () =>
+      import('./pages/rgpd/rgpd.component').then(
+        (m) => m.RgpdComponent
+      ),
+      
   },
 ];
