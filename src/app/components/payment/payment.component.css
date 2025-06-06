@@ -39,3 +39,8 @@ button:hover {
   margin: 1rem 0;
   font-size: 1.1rem;
 }
+
+.redText {
+  font-size: smaller;
+  color: red;
+}

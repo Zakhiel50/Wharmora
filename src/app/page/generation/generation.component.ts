@@ -1,5 +1,5 @@
 import html2canvas from 'html2canvas';
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { ManageDataService } from '../../services/manage-data.service';
 import { Data } from '../../../utils/models/data.type';
 import supabase from '../../../utils/supabase.init';
@@ -34,7 +34,7 @@ type UserData = {
   templateUrl: './generation.component.html',
   styleUrls: ['./generation.component.css']
 })
-export class GenerationComponent {
+export class GenerationComponent implements AfterViewInit {
 
   userData: UserData | undefined
   constructor(private dataService: ManageDataService, private router: Router, private pdfStorage: PdfStorageService) { }
@@ -46,6 +46,13 @@ export class GenerationComponent {
       this.router.navigate(['payment']);
     }, 5000)
   }
+
+ngAfterViewInit(): void {
+  setTimeout(() => {
+    this.generatePDF();
+  }, 800);
+}
+
 
   fetchData = async () => {
     const { data: userData, error: userError } = await supabase.auth.getUser();
@@ -95,8 +102,7 @@ export class GenerationComponent {
     }).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
 
-      // Crée le PDF en mode paysage
-      const pdf = new jsPDF('l', 'mm', 'a3');
+      const pdf = new jsPDF('l', 'mm', 'a4');
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
 
@@ -107,7 +113,6 @@ export class GenerationComponent {
       let width = pdfWidth;
       let height = pdfHeight;
 
-      // Adapter le contenu à la page tout en gardant les proportions
       if (imgRatio > pdfRatio) {
         height = width / imgRatio;
       } else {
@@ -119,7 +124,8 @@ export class GenerationComponent {
 
       pdf.addImage(imgData, 'PNG', x, y, width, height);
       const pdfBlob = pdf.output('blob');
-this.pdfStorage.setPdf(pdfBlob);
+      
+return this.pdfStorage.setPdf(pdfBlob);
     });
 
   }

@@ -38,6 +38,8 @@ onSubmit(): void {
 }
 downloadPdf() {
   const blob = this.pdfStorage.getPdf();
+  console.log(blob);
+  
   if (blob) {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');

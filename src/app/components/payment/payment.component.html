@@ -1,14 +1,14 @@
 <div class="payment-container">
     <h2>Paiement</h2>
 
-    @if (!paymentConfirmed) {
+    @if (paymentConfirmed) {
     <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
         <label>
             Nom complet :
             <input formControlName="fullName" placeholder="Jean Dupont" />
         </label>
         @if (paymentForm.get('fullName')?.invalid && paymentForm.get('fullName')?.touched) {
-        <div>Nom requis</div>
+        <div class="redText">Nom requis</div>
         }
 
         <label>
@@ -16,7 +16,7 @@
             <input formControlName="address" placeholder="10 rue de la Paix" />
         </label>
         @if (paymentForm.get('address')?.invalid && paymentForm.get('address')?.touched) {
-        <div>Adresse requise</div>
+        <div class="redText">Adresse requise</div>
         }
 
         <label>
@@ -24,7 +24,7 @@
             <input formControlName="city" placeholder="Paris" />
         </label>
         @if (paymentForm.get('city')?.invalid && paymentForm.get('city')?.touched) {
-        <div>Ville requise</div>
+        <div class="redText">Ville requise</div>
         }
 
         <label>
@@ -32,7 +32,7 @@
             <input formControlName="postalCode" placeholder="75001" />
         </label>
         @if (paymentForm.get('postalCode')?.invalid && paymentForm.get('postalCode')?.touched) {
-        <div>Code postal invalide</div>
+        <div class="redText">Code postal invalide</div>
         }
 
         <label>
@@ -40,7 +40,7 @@
             <input formControlName="cardNumber" placeholder="1234 5678 9012 3456" />
         </label>
         @if (paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched) {
-        <div>Carte invalide</div>
+        <div class="redText">Carte invalide</div>
         }
 
         <label>
@@ -48,7 +48,7 @@
             <input formControlName="expiry" placeholder="12/25" />
         </label>
         @if (paymentForm.get('expiry')?.invalid && paymentForm.get('expiry')?.touched) {
-        <div>Date invalide</div>
+        <div class="redText">Date invalide</div>
         }
 
         <label>
@@ -56,7 +56,7 @@
             <input formControlName="cvv" placeholder="123" />
         </label>
         @if (paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched) {
-        <div>CVV invalide</div>
+        <div class="redText">CVV invalide</div>
         }
 
         <div class="summary">
