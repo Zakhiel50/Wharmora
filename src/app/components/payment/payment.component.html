@@ -67,10 +67,12 @@
     </form>
     } @else {
     <div class="confirmation-message">
-        <p><strong>Merci pour votre achat,</strong></p>
-        <p>Votre livre est entre les mains d'un imprimeur partenaire.</p>
-        <p>Il vous enverra votre livre une fois imprimé.</p>
-        <p><em>Merci pour votre confiance et à bientôt sur Warmhora.</em></p>
-    </div>
+    <p><strong>Merci pour votre achat !</strong></p>
+    <p>Votre livre est maintenant envoyé à l’imprimeur <strong>ImpressioNova</strong>.</p>
+    <p>Vous le recevrez sous 7 jours à l’adresse fournie.</p>
+    <p><em>Merci pour votre confiance et à bientôt sur Warmhora.</em></p>
+
+    <button (click)="downloadPdf()">📄 Télécharger mon livre en PDF</button>
+  </div>
     }
 </div>

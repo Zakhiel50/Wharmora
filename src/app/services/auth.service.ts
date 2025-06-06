@@ -13,26 +13,22 @@ export class AuthService {
     this.supabase = createClient(environment.supabaseUrl, environment.apiKey);
   }
   
-  async signIn(email: string, password: string) {
-    const { data, error } = await this.supabase.auth.signInWithPassword({ email, password });
-    console.log(data);
-    
-    if (error) {
-      return error;
-    }
-    else if (data) {
-      sessionStorage.setItem('user', JSON.stringify(data.user));
-      this.router.navigate(['form'])
-    }
-    return
+async signIn(email: string, password: string): Promise<{ data: any, error: any }> {
+  const { data, error } = await this.supabase.auth.signInWithPassword({ email, password });
+
+  if (data?.user) {
+    sessionStorage.setItem('user', JSON.stringify(data.user));
   }
+
+  return { data, error }; // toujours retourner le même format
+}
+
 
   async signUp(email: string, password: string) {
     console.log('Tentative d’inscription...', email);
   
     const { data, error } = await this.supabase.auth.signUp({ email, password });
-  console.log(data)
-  console.log(error)
+
     if (error) {
       return console.log('error : ', error.message);
     }
@@ -41,7 +37,7 @@ export class AuthService {
       const { error: insertError } = await this.supabase
         .from('users')
         .insert([{ id: data.user.id, email: data.user.email }],); 
-  
+      alert('Votre inscription à  bien été pris en compte.')
       if (insertError) {
         console.error('Erreur insertion user:', insertError.message);
       }

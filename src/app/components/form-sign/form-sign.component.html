@@ -26,6 +26,9 @@
                     <lucide-icon class="absolute top-1/4 right-2"  (click)="showPassword()" [img]="eye"></lucide-icon>
                 }
             </div>
+                    @if (this.wrongEmailPassword) {
+            <p style="color: red; font-size: smaller;">Votre email ou votre mot de passe est incorrecte !</p>
+        }
         </div>
     }  
     @if (isSignIn()){
@@ -52,6 +55,7 @@
                 <lucide-icon icon class="icon" [img]="moveRight"></lucide-icon>
             </app-custom-button>
         }
+
     </div>
     } @else {
         <div class="border border-gray-200 my-6">

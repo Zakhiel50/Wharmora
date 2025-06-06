@@ -31,7 +31,7 @@ passwordConfirmation: string = ''
 isSignIn = input<boolean>(true)
 isShow = false
 alertMessage: string = ""
-
+wrongEmailPassword = false
 
 userMocked = {
   email: 'test@gmail.com',
@@ -62,7 +62,7 @@ showPassword() {
  * Si true, retourne le message d'indication
  */
 CheckPasswordConfirmation() {
-  if(this.regexPassword.test(this.userPassword) && this.regexEmail.test(this.email) && this.email === this.userMocked.email && this.userPassword === this.userMocked.password) {
+  if(this.regexPassword.test(this.userPassword) && this.regexEmail.test(this.email)) {
     return this.router.navigate(['/home']);
   }
     return this.alertMessage = "L'email ou le mot de passe est incorrecte."
@@ -100,8 +100,24 @@ signUp () {
   this.authService.signUp(this.email, this.userPassword)
 }
 
-signIn () {
-  this.authService.signIn(this.email, this.userPassword)
+async signIn() {
+  const { data, error } = await this.authService.signIn(this.email, this.userPassword);
+
+  if (error || !data?.user) {
+    this.alertMessage = "L'email ou le mot de passe est incorrect.";
+  } else {
+    this.alertMessage = '';
+    console.log('Connexion réussie', data.user);
+    this.router.navigate(['form']); // navigation ici, pas dans le service
+  }
+}
+
+
+checkValidityPasswordEmail() {
+  
+    return this.wrongEmailPassword = true
+
+
 }
 }
 

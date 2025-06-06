@@ -7,6 +7,7 @@ import jsPDF from 'jspdf';
 import { User } from '@supabase/supabase-js';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { Router } from '@angular/router';
+import { PdfStorageService } from '../../pdf-storage.service';
 
 type UserData = {
   children_name: string,
@@ -36,7 +37,7 @@ type UserData = {
 export class GenerationComponent {
 
   userData: UserData | undefined
-  constructor(private dataService: ManageDataService, private router: Router) { }
+  constructor(private dataService: ManageDataService, private router: Router, private pdfStorage: PdfStorageService) { }
 
   ngOnInit(): void {
     //const data = this.dataService.loadData();
@@ -117,7 +118,8 @@ export class GenerationComponent {
       const y = (pdfHeight - height) / 2;
 
       pdf.addImage(imgData, 'PNG', x, y, width, height);
-      pdf.save('document-landscape.pdf');
+      const pdfBlob = pdf.output('blob');
+this.pdfStorage.setPdf(pdfBlob);
     });
 
   }

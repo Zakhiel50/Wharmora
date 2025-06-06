@@ -1,6 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PdfStorageService } from '../../pdf-storage.service';
 
 @Component({
   selector: 'app-payment',
@@ -14,7 +15,7 @@ export class PaymentComponent implements OnInit {
   totalAmount = 25.00;
 paymentConfirmed = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private pdfStorage: PdfStorageService) {}
 
   ngOnInit(): void {
   this.paymentForm = this.fb.group({
@@ -35,4 +36,18 @@ onSubmit(): void {
     this.paymentForm.markAllAsTouched(); 
   }
 }
+downloadPdf() {
+  const blob = this.pdfStorage.getPdf();
+  if (blob) {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'document-landscape.pdf';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  } else {
+    alert("Le PDF n'est pas disponible.");
+  }
+}
+
 }
