@@ -147,7 +147,7 @@
             <li>Animal représentant le défunt: <strong>{{formDeceased.get('deceased_animal_type')?.value | titlecase}}</strong></li>
           }
           <li>Animal favoris de l'enfant: <strong>{{formAnimal.get('favorite_animal')?.value | titlecase}}</strong></li>
-          <li>A t'il un aniomal de compagnie: <strong>{{formAnimal.get('is_pet')?.value == true ? 'Oui' : 'Non'}}</strong></li>
+          <li>A-t-il un animal de compagnie: <strong>{{formAnimal.get('is_pet')?.value == true ? 'Oui' : 'Non'}}</strong></li>
           @if (formAnimal.get('is_pet')?.value) {
             <li>Type d'animal de compagnie: <strong>{{formAnimal.get('pet_type')?.value | titlecase}}</strong></li>
             <li>Nom de l'animal de copagnie: <strong>{{formAnimal.get('pet_name')?.value | titlecase}}</strong></li>

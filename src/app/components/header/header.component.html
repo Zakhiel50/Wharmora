@@ -1,10 +1,10 @@
-<header class="w-full h-20 bg-slate-400">
+<header class="w-full h-20 bg">
     <nav class="w-full flex flex-row justify-around items-center">
-        <img class="w-32 pt-3" src="assets/img/logo.png" alt="">
+        <img class="w-12 pt-3" src="assets/img/miniature-blancsec-fond-fonce.webp" alt="">
         
-        <p class="pt-6" [ngClass]="{'active': currentSection === 'form'}" (click)="setSection('form')">Créer mon livre</p>
-        <p class="pt-6" [ngClass]="{'active': currentSection === 'RGPD'}" (click)="setSection('rgpd')">Conditions d'utlisation</p>
-        <p  class="pt-6"[ngClass]="{'active': currentSection === 'about'}" (click)="setSection('about')">À propos</p>
+        <p class="pt-6 color-white" [ngClass]="{'active': currentSection === 'form'}" (click)="setSection('form')">Créer mon livre</p>
+        <p class="pt-6 color-white" [ngClass]="{'active': currentSection === 'RGPD'}" (click)="setSection('rgpd')">Conditions d'utlisation</p>
+        <p  class="pt-6 color-white"[ngClass]="{'active': currentSection === 'about'}" (click)="setSection('about')">À propos</p>
 
         <div class="w-12 h-12 ml-20 mt-4 rounded-full">
             <img class="w-full h-full rounded-full" src="assets/img/imgMock.jpg" (click)="setSection('login')">

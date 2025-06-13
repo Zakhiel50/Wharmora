@@ -4,6 +4,14 @@ nav p {
 }
 
 nav p.active {
-    border-bottom: 3px solid #ff6347; /* La couleur de la barre */
-    font-weight: bold;  /* Facultatif pour mettre en avant l'élément actif */
+    border-bottom: 3px solid #ff6347; 
+    font-weight: bold;  
+}
+
+.bg {
+background-color: #6b5da0;
+}
+
+.color-white  {
+    color: #fbf8fc;
 }
