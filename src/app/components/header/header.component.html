@@ -1,6 +1,9 @@
 <header class="w-full h-20 bg">
     <nav class="w-full flex flex-row justify-around items-center">
-        <img class="w-12 pt-3" src="assets/img/miniature-blancsec-fond-fonce.webp" alt="">
+        <div class="relative w-12 pt-3">
+            <div class=" absolute radius"></div>
+            <img class="w-12-" src="assets/img/miniature-blancsec-fond-fonce.webp" alt="">
+        </div>
         
         <p class="pt-6 color-white" [ngClass]="{'active': currentSection === 'form'}" (click)="setSection('form')">Créer mon livre</p>
         <p class="pt-6 color-white" [ngClass]="{'active': currentSection === 'RGPD'}" (click)="setSection('rgpd')">Conditions d'utlisation</p>

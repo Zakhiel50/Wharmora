@@ -15,3 +15,12 @@ background-color: #6b5da0;
 .color-white  {
     color: #fbf8fc;
 }
+
+.radius {
+    border-radius: 100px;
+    background-color: #fbf8fc;
+    width: 10px;
+    height: 10px;
+    top: 12px;
+    left: 20px;
+}
