@@ -1,7 +1,7 @@
 <div class="payment-container">
     <h2>Paiement</h2>
 
-    @if (paymentConfirmed) {
+    @if (!paymentConfirmed) {
     <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
         <label>
             Nom complet :
